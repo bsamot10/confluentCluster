@@ -1,0 +1,2 @@
+. tag.sh
+. push.sh

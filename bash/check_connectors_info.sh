@@ -1,0 +1,1 @@
+curl -XGET http://localhost:8083/connectors?expand=info | jq
