@@ -38,6 +38,7 @@ RUN touch /var/lib/zookeeper/myid
 COPY conf/zookeeper.properties $CONFLUENT_HOME/etc/kafka/zookeeper.properties
 COPY conf/ksql-server.properties $CONFLUENT_HOME/etc/ksqldb/ksql-server.properties
 COPY conf/schema-registry.properties $CONFLUENT_HOME/etc/schema-registry/schema-registry.properties
+COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar  $CONFLUENT_HOME/share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash /confluent/bash
 
 ENTRYPOINT bash
