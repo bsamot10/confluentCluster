@@ -18,7 +18,6 @@ RUN apt-get -y install kafkacat
 RUN apt-get -y install scala
 RUN apt-get -y install netcat
 
-
 RUN mkdir /usr/local/confluent
 ENV CONFLUENT_HOME=/usr/local/confluent
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -38,15 +37,8 @@ RUN rm debezium-connector-mysql-1.9.2.Final-plugin.tar.gz
 RUN mv debezium-connector-mysql connectors/debezium-connector-mysql
 
 RUN mkdir /var/lib/zookeeper
-RUN echo ${NODE_ID} > /var/lib/zookeeper/myid
+RUN touch /var/lib/zookeeper/myid
 COPY conf/zookeeper.properties etc/kafka/zookeeper.properties
-
-COPY conf/server.properties etc/kafka/server.properties
-RUN sed -i "s/<node_id>/${NODE_ID}/g" etc/kafka/server.properties
-
-COPY conf/server.properties etc/kafka/connect-distributed.properties
-RUN sed -i "s/<node_id>/${NODE_ID}/g" etc/kafka/connect-distributed.properties
-
 COPY conf/schema-registry.properties etc/schema-registry/schema-registry.properties
 COPY conf/ksql-server.properties etc/ksqldb/ksql-server.properties
 COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
