@@ -16,6 +16,7 @@ RUN apt-get -y install net-tools
 RUN apt-get -y install openjdk-11-jdk
 RUN apt-get -y install kafkacat
 RUN apt-get -y install scala
+RUN apt-get -y netcat
 
 RUN mkdir confluent
 RUN curl -O https://packages.confluent.io/archive/7.5/confluent-7.5.2.tar.gz
