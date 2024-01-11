@@ -6,7 +6,7 @@ docker run -d \
 	--restart unless-stopped \
         -it bsamot10/confluent-cluster
 
-echo -e "\myid.sh"
+echo -e "\nmyid.sh"
 . myid.sh
 echo -e "\nserver-properties.sh"
 . server-properties.sh
