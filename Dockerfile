@@ -21,11 +21,11 @@ RUN apt-get -y netcat
 RUN curl -O https://packages.confluent.io/archive/7.5/confluent-7.5.2.tar.gz
 RUN tar -xvzf confluent-7.5.2.tar.gz
 RUN rm confluent-7.5.2.tar.gz
-RUN mv /confluent-7.5.2 /user/local/confluent-7.5.2
-RUN mv /user/local/confluent-7.5.2 /user/local/confluent
+RUN mv /confluent-7.5.2 /usr/local/confluent-7.5.2
+RUN mv /user/local/confluent-7.5.2 /usr/local/confluent
 
+ENV CONFLUENT_HOME=/usr/local/confluent
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-ENV CONFLUENT_HOME=/user/local/confluent
 ENV PATH=$PATH:$CONFLUENT_HOME/bin
 
 RUN mkdir $CONFLUENT_HOME/connectors
@@ -34,13 +34,16 @@ RUN tar -xvzf debezium-connector-mysql-1.9.2.Final-plugin.tar.gz
 RUN rm debezium-connector-mysql-1.9.2.Final-plugin.tar.gz
 RUN mv /debezium-connector-mysql $CONFLUENT_HOME/connectors/debezium-connector-mysql
 
-RUN mkdir $CONFLUENT_HOME/etc/zookeeper-data
-RUN touch $CONFLUENT_HOME/etc/zookeeper-data/myid
+RUN mkdir /var/lib/zookeeper
+RUN touch /var/lib/zookeeper/myid
+
 COPY conf/zookeeper.properties $CONFLUENT_HOME/etc/kafka/zookeeper.properties
 COPY conf/ksql-server.properties $CONFLUENT_HOME/etc/ksqldb/ksql-server.properties
 COPY conf/schema-registry.properties $CONFLUENT_HOME/etc/schema-registry/schema-registry.properties
 COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar  $CONFLUENT_HOME/share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash $CONFLUENT_HOME/bash
+
+WORKDIR $CONFLUENT_HOME
 
 ENTRYPOINT bash
 
