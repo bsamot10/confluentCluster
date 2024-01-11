@@ -1,4 +1,4 @@
-echo -e "start-zookeeper.sh"
+echo -e "\nstart-zookeeper.sh"
 docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . start-zookeeper.sh"
 sleep 20
 docker exec confluent-<node_id> jps
