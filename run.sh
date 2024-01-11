@@ -5,8 +5,11 @@ docker run -d \
         --network overlay-cluster \
 	--restart unless-stopped \
         -it bsamot10/confluent-cluster
-	
+
+echo -e "\myid.sh"
 . myid.sh
+echo -e "\nserver-properties.sh"
 . server-properties.sh
+echo -e "\nconnect-properties.sh"
 . connect-properties.sh
 . services.sh
