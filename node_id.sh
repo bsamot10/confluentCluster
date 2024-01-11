@@ -4,5 +4,5 @@ then
         exit 1;
 fi
 
-for file in {run.sh,shell.sh,myid.sh,connect-properties.sh,server-properties.sh,services.sh,conf/myid,conf/connect-distributed.properties,conf/server.properties};
+for file in {run.sh,shell.sh,services.sh};
 do sed -i "s/<node_id>/$1/g" $file; done;
