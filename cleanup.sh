@@ -1,0 +1,1 @@
+docker exec confluent-2  bash -c 'for topic in {_schemas,_schema_encoders,_dek_registry_keys}; do kafka-configs --topic $topic --bootstrap-server 10.0.1.11:9092 --add-config "cleanup.policy=compact" --alter; done;'
