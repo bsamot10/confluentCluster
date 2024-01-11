@@ -40,10 +40,15 @@ RUN mv debezium-connector-mysql connectors/debezium-connector-mysql
 RUN mkdir /var/lib/zookeeper
 RUN echo ${NODE_ID} > /var/lib/zookeeper/myid
 COPY conf/zookeeper.properties etc/kafka/zookeeper.properties
+
 COPY conf/server.properties etc/kafka/server.properties
 RUN sed -i "s/<node_id>/${NODE_ID}/g" etc/kafka/server.properties
-COPY conf/ksql-server.properties etc/ksqldb/ksql-server.properties
+
+COPY conf/server.properties etc/kafka/connect-distributed.properties
+RUN sed -i "s/<node_id>/${NODE_ID}/g" etc/kafka/connect-distributed.properties
+
 COPY conf/schema-registry.properties etc/schema-registry/schema-registry.properties
+COPY conf/ksql-server.properties etc/ksqldb/ksql-server.properties
 COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash bash
 
