@@ -16,7 +16,7 @@ RUN apt-get -y install net-tools
 RUN apt-get -y install openjdk-11-jdk
 RUN apt-get -y install kafkacat
 RUN apt-get -y install scala
-RUN apt-get -y netcat
+RUN apt-get -y install netcat
 
 RUN curl -O https://packages.confluent.io/archive/7.5/confluent-7.5.2.tar.gz
 RUN tar -xvzf confluent-7.5.2.tar.gz
@@ -35,9 +35,10 @@ RUN rm debezium-connector-mysql-1.9.2.Final-plugin.tar.gz
 RUN mv /debezium-connector-mysql $CONFLUENT_HOME/connectors/debezium-connector-mysql
 
 RUN mkdir /var/lib/zookeeper
-RUN touch /var/lib/zookeeper/myid
-
+RUN echo ${NODE_ID} > /var/lib/zookeeper/myid
 COPY conf/zookeeper.properties $CONFLUENT_HOME/etc/kafka/zookeeper.properties
+COPY conf/server.properties $CONFLUENT_HOME/etc/kafka/server.properties
+RUN sed -i "s/<node_id>/${NODE_ID}/g" $CONFLUENT_HOME/etc/kafka/server.properties
 COPY conf/ksql-server.properties $CONFLUENT_HOME/etc/ksqldb/ksql-server.properties
 COPY conf/schema-registry.properties $CONFLUENT_HOME/etc/schema-registry/schema-registry.properties
 COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar  $CONFLUENT_HOME/share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
@@ -46,4 +47,3 @@ COPY bash $CONFLUENT_HOME/bash
 WORKDIR $CONFLUENT_HOME
 
 ENTRYPOINT bash
-
