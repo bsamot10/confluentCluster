@@ -22,7 +22,7 @@ RUN curl -O https://packages.confluent.io/archive/7.5/confluent-7.5.2.tar.gz
 RUN tar -xvzf confluent-7.5.2.tar.gz
 RUN rm confluent-7.5.2.tar.gz
 RUN mv /confluent-7.5.2 /usr/local/confluent-7.5.2
-RUN mv /user/local/confluent-7.5.2 /usr/local/confluent
+RUN mv /usr/local/confluent-7.5.2 /usr/local/confluent
 
 ENV CONFLUENT_HOME=/usr/local/confluent
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
