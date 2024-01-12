@@ -8,8 +8,8 @@ docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . s
 sleep 20
 docker exec confluent-<node_id> jps
 
-echo -e "\ncleanup.sh"
-. cleanup.sh
+#echo -e "\ncleanup.sh"
+#. cleanup.sh
 
 echo -e "\nstart-schema.sh"
 docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . start-schema.sh"
