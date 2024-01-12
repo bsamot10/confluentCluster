@@ -41,7 +41,7 @@ RUN touch /var/lib/zookeeper/myid
 COPY conf/zookeeper.properties etc/kafka/zookeeper.properties
 COPY conf/schema-registry.properties etc/schema-registry/schema-registry.properties
 COPY conf/ksql-server.properties etc/ksqldb/ksql-server.properties
-COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
+#COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash bash
 
 ENTRYPOINT bash
