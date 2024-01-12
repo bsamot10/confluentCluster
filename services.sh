@@ -3,8 +3,8 @@ docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . s
 sleep 20
 docker exec confluent-<node_id> jps
 
-echo -e "\njmx.sh.sh"
-. jmx.sh.sh
+echo -e "\njmx.sh"
+. jmx.sh
 
 echo -e "\nstart-kafka.sh"
 docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . start-kafka.sh"
