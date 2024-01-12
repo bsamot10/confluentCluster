@@ -2,7 +2,7 @@ docker run -d \
         -h confluent-<node_id> \
         --name confluent-<node_id> \
         --ip 10.0.1.1<node_id> \
-	--env JMX_PORT='9060' \
+	--env JMX_PORT='9999' \
         --network overlay-cluster \
 	--restart unless-stopped \
         -it bsamot10/confluent-cluster
