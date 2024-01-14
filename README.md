@@ -1,6 +1,14 @@
 # confluentCluster
 Docker container for a testing 3-node kafka cluster using confluent's 7.5.2 distribution (file confluent-7.5.2.tar.gz in https://packages.confluent.io/archive/7.5/).
 
+The present deployment supports 5 confluent services:
+
+1. zookeeper
+2. kafka
+3. schema registry
+4. kafka connect
+5. ksql
+   
 ## Requirements
 3 Linux nodes with docker engine installed in each one of them. 
 
@@ -34,34 +42,22 @@ Assign an id in every node.
 Run ```. node_id.sh 1```, ```. node_id.sh 2```, ```. node_id.sh 3``` in each node correspondingly.
 
 ## Step 5
-
-CASE 1: pull the image from my docker hub (https://hub.docker.com/repositories/bsamot10).
+Pull the image from my docker hub (https://hub.docker.com/repositories/bsamot10).
 
 Run ```. pull.sh``` in every node.
 
-CASE 2: build you own docker image. 
-
-Run ```. build.sh``` in any of the nodes.
-
-## Step 5
-
-CASE 1: the image is pulled from my docker hub (https://hub.docker.com/repositories/bsamot10).
-
-Run ```. run.sh``` in every node.
-
-CASE 2: use your own image.
-
-Update 'run.sh' in every node by replacing the image name appropriately.
-
-Run ```. run.sh``` in every node.
-
 ## Step 6
-Enter the containers to verify that zookeeper and kafka services are running.
+Start confluence services in every node.
+
+Run ```. run.sh``` in every node.
+
+## Step 7
+Enter the containers to verify that confluent services are running.
 
 Run ```. shell.sh``` in every node.
 
 Run ```jps``` inside the containers.
 
-If everything has gone well, the ```jps``` command should print 'Kafka' and 'QuorumPeerMain'.
+If everything has gone well, the ```jps``` command should print all 5 services.
 
-Run the remaining services manually.
+If not, try to re-start the missing services in each node.
