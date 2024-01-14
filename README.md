@@ -60,4 +60,4 @@ Run ```jps``` inside the containers.
 
 If everything has gone well, the ```jps``` command should print all 5 services.
 
-If not, try to re-start the missing services in each node.
+If not, try to restart the missing services in each node.
