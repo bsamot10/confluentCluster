@@ -18,7 +18,7 @@ docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . s
 sleep 15
 docker exec confluent-<node_id> jps
 
-#echo -e "\nstart-ksql.sh"
-#docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . start-ksql.sh"
-#sleep 15
-#docker exec confluent-<node_id> jps
+echo -e "\nstart-ksql.sh"
+docker exec -d confluent-<node_id> bash -c "cd /usr/local/confluent/bash/ && . start-ksql.sh"
+sleep 15
+docker exec confluent-<node_id> jps
