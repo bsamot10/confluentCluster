@@ -18,6 +18,7 @@ RUN apt-get -y install openjdk-11-jdk
 RUN apt-get -y install kafkacat
 RUN apt-get -y install scala
 RUN apt-get -y install netcat
+RUN apt-get -y install python3-pip
 
 RUN mkdir /usr/local/confluent
 ENV CONFLUENT_HOME=/usr/local/confluent
