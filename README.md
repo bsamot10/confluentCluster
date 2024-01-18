@@ -1,5 +1,5 @@
 # confluentCluster
-Docker container for a testing 3-node kafka cluster using confluent's 7.5.2 distribution (file confluent-7.5.2.tar.gz in https://packages.confluent.io/archive/7.5/).
+Docker container for a 3-node kafka cluster (not for production) using confluent's 7.5.2 distribution (file confluent-7.5.2.tar.gz in https://packages.confluent.io/archive/7.5/).
 
 The present deployment supports 5 confluent services:
 
@@ -59,5 +59,3 @@ Run ```. shell.sh``` in every node.
 Run ```jps``` inside the containers.
 
 If everything has gone well, the ```jps``` command should print all 5 services.
-
-If not, try to restart the missing services in each node.
