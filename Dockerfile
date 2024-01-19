@@ -1,29 +1,10 @@
-FROM ubuntu:22.04
-
-USER root
-
-RUN apt-get -y update
-RUN apt-get -y dist-upgrade
-RUN apt-get -y install openssh-server
-RUN apt-get -y install zip
-RUN apt-get -y install gzip
-RUN apt-get -y install tar
-RUN apt-get -y install vim
-RUN apt-get -y install curl
-RUN apt-get -y install jq
-RUN apt-get -y install cron
-RUN apt-get -y install iputils-ping
-RUN apt-get -y install net-tools
-RUN apt-get -y install openjdk-11-jdk
-RUN apt-get -y install kafkacat
-RUN apt-get -y install scala
-RUN apt-get -y install netcat
-RUN apt-get -y install python3-pip
+FROM bsamot10/ubuntu:22.04
 
 RUN mkdir /usr/local/confluent
 ENV CONFLUENT_HOME=/usr/local/confluent
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH=$PATH:$CONFLUENT_HOME/bin
+
 WORKDIR /usr/local/confluent
 
 RUN curl -O https://packages.confluent.io/archive/7.5/confluent-7.5.2.tar.gz
