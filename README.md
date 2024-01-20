@@ -1,5 +1,5 @@
 # confluentCluster
-Docker container for a 3-node kafka cluster (not for production) using confluent's 7.5.2 distribution (file confluent-7.5.2.tar.gz in https://packages.confluent.io/archive/7.5/).
+Docker container for a 3-node kafka cluster (not for production) using confluent's 7.5.2 distribution (file _confluent-7.5.2.tar.gz_ in https://packages.confluent.io/archive/7.5/).
 
 The present deployment supports 5 confluent services:
 
