@@ -28,8 +28,5 @@ COPY conf/kafka-server-start bin/kafka-server-start
 RUN chmod 755 bin/kafka-server-start
 #COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash bash
-
-RUN ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -P "" \
- && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
  
 ENTRYPOINT service ssh start; bash
