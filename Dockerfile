@@ -29,4 +29,4 @@ RUN chmod 755 bin/kafka-server-start
 #COPY jars/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar share/java/kafka/cruise-control-metrics-reporter-2.5.135-SNAPSHOT.jar
 COPY bash bash
 
-ENTRYPOINT bash
+ENTRYPOINT service ssh start; bash
